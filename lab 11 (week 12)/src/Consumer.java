@@ -17,12 +17,15 @@ public class Consumer implements Runnable {
     public void run() {
         try {
             int i = 1;
+
+            // Commented out code was checking if queue was empty.
+            // This is now moved to the remove() method.
             while (i <= greetingCount) {
-                if (!queue.isEmpty()) {
-                    String greeting = queue.remove();
-                    System.out.println(greeting);
-                    i++;
-                }
+                // if (!queue.isEmpty()) {
+                String greeting = queue.remove();
+                System.out.println(greeting);
+                i++;
+                // }
                 Thread.sleep((int)(Math.random() * DELAY));
             }
         } catch (InterruptedException exception) {

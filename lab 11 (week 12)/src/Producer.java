@@ -21,11 +21,14 @@ public class Producer implements Runnable {
     public void run() {
         try {
             int i = 1;
+
+            // Commented out code was checking if queue was full.
+            // This is now moved to the add() method.
             while (i <= greetingCount) {
-                if (!queue.isFull()) {
-                    queue.add(i + ": " + greeting);
-                    i++;
-                }
+                // if (!queue.isFull()) {
+                queue.add(i + ": " + greeting);
+                i++;
+                // }
                 Thread.sleep((int) (Math.random() * DELAY));
             }
         } catch (InterruptedException exception) {
